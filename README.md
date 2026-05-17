@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -606,7 +606,11 @@
     <div class="frame-deco2"></div>
     <div class="frame-deco"></div>
     <div class="photo-frame">
-     
+      <div class="photo-placeholder">
+        <div class="photo-icon">📸</div>
+        <div class="photo-label">Tu foto</div>
+      </div>
+    </div>
   </div>
 </section>
 
