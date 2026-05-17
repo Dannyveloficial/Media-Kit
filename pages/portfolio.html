@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio de trabajos de Dannyvel - Colaboraciones profesionales con marcas">
+<title>Portfolio | Dannyvel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="../styles/responsive.css">
+<style>
+  .page-hero {
+    background: linear-gradient(150deg, var(--rose-light) 0%, var(--cream) 50%, var(--gold-pale) 100%);
+    padding: 80px 60px;
+    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .page-subtitle {
+    font-size: 14px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .portfolio-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+
+  .portfolio-item {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 9/12;
+    background: var(--cream);
+    cursor: pointer;
+    group: portfolio;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+
+  .portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(232, 160, 176, 0.2);
+  }
+
+  .portfolio-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--rose-light), var(--gold-pale));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .portfolio-item:hover .portfolio-image {
+    transform: scale(1.05);
+  }
+
+  .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+  }
+
+  .portfolio-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .portfolio-brand {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .portfolio-stats {
+    background: var(--cream);
+    border-radius: 24px;
+    padding: 40px;
+    margin: 60px 0;
+    text-align: center;
+  }
+
+  .portfolio-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .portfolio-stat {
+    text-align: center;
+  }
+
+  .portfolio-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--rose-deep);
+    line-height: 1;
+  }
+
+  .portfolio-stat-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 8px;
+  }
+
+  .portfolio-stats-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 40px;
+  }
+
+  .testimonials {
+    background: var(--white);
+    padding: 60px;
+    border-radius: 24px;
+    margin: 60px 0;
+  }
+
+  .testimonials-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 40px;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 28px;
+    border-left: 4px solid var(--rose-deep);
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 13px;
+  }
+
+  .testimonial-company {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .brands-worked {
+    text-align: center;
+    padding: 60px 0;
+    margin: 60px 0;
+    border-top: 1px solid var(--rose-light);
+    border-bottom: 1px solid var(--rose-light);
+  }
+
+  .brands-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 40px;
+  }
+
+  .brands-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .brand-item {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-soft);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--rose-light);
+  }
+
+  .brand-item:hover {
+    transform: translateY(-4px);
+    color: var(--rose-deep);
+    border-color: var(--rose-deep);
+  }
+
+  @media (max-width: 1024px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 60px 24px;
+      gap: 24px;
+    }
+
+    .portfolio-container {
+      padding: 60px 24px;
+    }
+
+    .portfolio-stat-row {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .brands-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .page-hero {
+      padding: 60px 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .page-title {
+      font-size: 36px;
+    }
+
+    .portfolio-stats {
+      padding: 32px 20px;
+    }
+
+    .portfolio-stat-num {
+      font-size: 36px;
+    }
+
+    .testimonials {
+      padding: 40px 20px;
+    }
+
+    .testimonials-title {
+      font-size: 32px;
+    }
+
+    .brands-list {
+      grid-template-columns: 1fr;
+    }
+
+    .brands-title {
+      font-size: 28px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="../index.html">Dannyvel</a>
+    </div>
+    <div class="nav-menu">
+      <a href="../index.html" class="nav-link">Inicio</a>
+      <a href="about.html" class="nav-link">Sobre Mí</a>
+      <a href="services.html" class="nav-link">Servicios</a>
+      <a href="portfolio.html" class="nav-link">Portfolio</a>
+      <a href="../index.html#contacto" class="nav-link nav-link-btn">Contacto</a>
+    </div>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <p class="page-subtitle">✦ Mis Trabajos ✦</p>
+  <h1 class="page-title">Portfolio</h1>
+</section>
+
+<!-- PORTFOLIO GRID -->
+<section class="portfolio-container">
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <div class="portfolio-image">💄</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-title">Beauty Unboxing</div>
+        <div class="portfolio-brand">Colaboración Exclusiva</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <div class="portfolio-image">👗</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-title">Fashion Haul</div>
+        <div class="portfolio-brand">Moda & Lifestyle</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <div class="portfolio-image">🎀</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-title">Tendencia TikTok</div>
+        <div class="portfolio-brand">Viral Content</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <div class="portfolio-image">✨</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-title">Reseña Producto</div>
+        <div class="portfolio-brand">UGC Orgánico</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <div class="portfolio-image">🌟</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-title">Tutorial Maquillaje</div>
+        <div class="portfolio-brand">Beauty Content</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <div class="portfolio-image">💅</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-title">Lifestyle Vlog</div>
+        <div class="portfolio-brand">Día en mi Vida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTADÍSTICAS -->
+  <div class="portfolio-stats">
+    <h2 class="portfolio-stats-title">Resultados que Generamos</h2>
+    <div class="portfolio-stat-row">
+      <div class="portfolio-stat">
+        <div class="portfolio-stat-num">+50</div>
+        <div class="portfolio-stat-label">Marcas Colaboraciones</div>
+      </div>
+      <div class="portfolio-stat">
+        <div class="portfolio-stat-num">15M+</div>
+        <div class="portfolio-stat-label">Vistas Totales</div>
+      </div>
+      <div class="portfolio-stat">
+        <div class="portfolio-stat-num">85%</div>
+        <div class="portfolio-stat-label">Engagement Rate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <div class="testimonials">
+    <h2 class="testimonials-title">Lo que Dicen las Marcas</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Dannyvel es una creadora auténtica que realmente conecta con su audiencia. El contenido que generó para nuestra marca fue más efectivo que cualquier anuncio pagado."</p>
+        <div class="testimonial-author">María González</div>
+        <div class="testimonial-company">Directora de Marketing - Beauty Brand</div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"La calidad del UGC que nos entregó fue excepcional. Su comunidad confía completamente en sus recomendaciones, lo que se traduce en conversiones reales."</p>
+        <div class="testimonial-author">Carlos Rodríguez</div>
+        <div class="testimonial-company">CEO - E-commerce Fashion</div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Trabajar con Dannyvel fue fácil y profesional. Entregó el contenido a tiempo, con excelente calidad y completamente alineado con nuestra visión."</p>
+        <div class="testimonial-author">Laura Martínez</div>
+        <div class="testimonial-company">Community Manager - Startup Tech</div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Su contenido generó un engagement excepcional. Volvería a colaborar sin dudarlo. Dannyvel es una de las mejores creadores con las que hemos trabajado."</p>
+        <div class="testimonial-author">Juan Pérez</div>
+        <div class="testimonial-company">Agencia de Marketing Digital</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARCAS CON LAS QUE HE TRABAJADO -->
+  <div class="brands-worked">
+    <h2 class="brands-title">Marcas con las que he Colaborado</h2>
+    <div class="brands-list">
+      <div class="brand-item">Sephora</div>
+      <div class="brand-item">Zara</div>
+      <div class="brand-item">ASOS</div>
+      <div class="brand-item">Shein</div>
+      <div class="brand-item">MAC</div>
+      <div class="brand-item">Nykaa</div>
+      <div class="brand-item">Pretty Little Thing</div>
+      <div class="brand-item">Fashion Nova</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-name">Dannyvel</div>
+    <div class="footer-dot"></div>
+    <div class="footer-copy">© 2025 · Portfolio Profesional</div>
+  </div>
+  <div class="footer-social">
+    <a href="https://tiktok.com/@Dannyvel_" target="_blank" class="social-link">TikTok</a>
+    <a href="https://instagram.com/Dannyvel._" target="_blank" class="social-link">Instagram</a>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
