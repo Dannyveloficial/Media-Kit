@@ -1,0 +1,19 @@
+title: Dannyvel Media Kit
+description: Creadora de contenido colombiana con comunidad en Latinoamérica y Europa
+author: Dannyvel
+url: https://Dannyveloficial.github.io/Media-Kit
+
+theme: jekyll-theme-primer
+
+plugins:
+  - jekyll-github-metadata
+  - jekyll-seo-tag
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+
+exclude:
+  - .gitignore
+  - README.md
+  - LICENSE
+  - node_modules
